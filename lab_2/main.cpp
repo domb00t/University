@@ -1,4 +1,4 @@
-#include <iostream> 
+#include <iostream>
 #include <cmath>
 
 class Complex {
@@ -7,7 +7,7 @@ private:
     double im;
 public:
 
-    Complex() : re(0), im(0) {}
+    Complex() : re(0.0), im(0.0) {}
     Complex(double re,double im) : re(re), im(im) {}
 
     void sreal(double re_) {
@@ -32,7 +32,7 @@ public:
     void print() {
         if(im < 0) {
             std :: cout << re << im << "i" << std :: endl;
-        }else { 
+        }else {
             std :: cout << re << "+" << im << "i" << std :: endl;
         }
     }
@@ -53,7 +53,7 @@ public:
     double modul() {
         return sqrt(re * re + im * im);
     }
-    
+
     Complex sub(Complex num) {
         re -= num.greal();
         im -= num.gimage();
@@ -95,7 +95,7 @@ int main() {
     std :: cout << com1.modul() << " " <<  com2.modul() << std :: endl;
 
     int length = 100;
-    
+
     Complex* arrayx = new Complex[length];
     Complex* arrayy = new Complex[length];
 
@@ -105,7 +105,7 @@ int main() {
     }
 
     // solution in main
-    
+
     Complex res;
     bool flag;
     for(size_t index = 0; index < length;++index) {
@@ -123,7 +123,7 @@ int main() {
     com1.solution(arrayy,arrayx,length);
 
 
-    
+
     delete[] arrayx;
     delete[] arrayy;
 

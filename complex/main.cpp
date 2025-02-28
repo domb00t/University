@@ -24,7 +24,7 @@ public:
     void print() {
         if(im < 0) {
             std :: cout << re << im << "i" << std :: endl;
-        }else { 
+        }else {
             std :: cout << re << "+" << im << "i" << std :: endl;
         }
     }
@@ -68,9 +68,9 @@ Complex sum(Complex* lhs,Complex* rhs,size_t length) {
 int main() {
     size_t length = 100;
 
-    Complex* arrayx{init(length)};
-    Complex* arrayy{init(length)};
-    
+    Complex* arrayx = init(length);
+    Complex* arrayy = init(length);
+
     for(size_t index = 0; index < length;++index) {
         arrayy[index].sreal(pow(-1,index));
         arrayy[index].simage(pow(-1,index));
@@ -87,6 +87,6 @@ int main() {
     del(arrayx);
     del(arrayy);
 
-    
+
     return 0;
 }

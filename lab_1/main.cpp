@@ -1,4 +1,4 @@
-#include <iostream> 
+#include <iostream>
 #include <cmath>
 
 struct Complex {
@@ -17,7 +17,7 @@ Complex assign(double re = 0,double im = 0) {
 void print(Complex num) {
     if(num.im < 0) {
         std :: cout << num.re << num.im << "i" << std :: endl;
-    }else { 
+    }else {
         std :: cout << num.re << "+" << num.im << "i" << std :: endl;
     }
 }
@@ -83,7 +83,7 @@ Complex solution(Complex* lhs,Complex* rhs,int length) {
 
 int main() {
     int legnth = 100;
-    
+
     Complex* arrayx = new Complex[legnth];
     Complex* arrayy = new Complex[legnth];
 
