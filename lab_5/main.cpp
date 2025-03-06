@@ -14,6 +14,8 @@ public:
         }
     }
 
+    
+
     ~Matrix() {
         if(ptr) {
             for(int index = 0;index < row;++index) {
