@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <iostream>
+#include <strings.h>
 
 class Vector {
 public:
@@ -32,9 +33,19 @@ public:
     void sort() {
         bool flag = true;
         int tmp;
+
+        int max = arr[0];
+        int max_index = 0;
+        for(int index = 1;index < sz;++index) {
+            if(max < arr[index]) {
+                max = arr[index];
+                max_index = index;
+            };
+        }
+
         while(flag) {
             flag = false;
-            for(int index = 0;index < sz - 1;++index) {
+            for(int index = max_index;index < sz - 1;++index) {
                if(arr[index] < arr[index + 1]) {
                    tmp = arr[index + 1];
                    arr[index + 1 ] = arr[index];
@@ -73,11 +84,19 @@ int main() {
     Vector v2(size);
 
     //solution as function in main
+    int max = v1.at(0);
+    int max_index = 0;
+    for(int index = 1;index < v1.size();++index) {
+        if(max < v1.at(index)) {
+            max = v1.at(index);
+            max_index = index;
+        };
+    }
     bool flag = true;
     int tmp;
     while(flag) {
         flag = false;
-        for(int index = 0;index < v2.size() - 1;++index) {
+        for(int index= max_index;index < v2.size() - 1;++index) {
            if(v2.at(index)< v2.at(index + 1)) {
                tmp = v2.at(index + 1);
                v2.at(index + 1) = v2.at(index);
