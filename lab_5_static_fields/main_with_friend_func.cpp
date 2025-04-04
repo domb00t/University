@@ -95,6 +95,9 @@ public:
       return  *this;
   }
 
+  friend int positive_sum(const Matrix& obj);
+  friend void min(Matrix* arr,int sz);
+
 
 
 private:
@@ -115,7 +118,7 @@ private:
     static int k;
 };
 
-int Matrix :: min = -1;
+int Matrix :: min = 3;
 int Matrix :: k = 3;
 
 void min(Matrix* arr,int sz) {
@@ -123,6 +126,16 @@ void min(Matrix* arr,int sz) {
     for(int index = 1;index < sz; ++index) {
         if(arr[index].max() < Matrix :: min_()) Matrix :: min_() = arr[index].max();
     }
+}
+
+int positive_sum(const Matrix& obj) {
+    int sum = 0;
+    for(int index  = 0; index < obj.row; ++index) {
+        for(int _index = 0;_index < obj.col;++_index) {
+            if(obj.ptr[index][_index] > 0) sum += obj.ptr[index][_index];
+        }
+    }
+    return sum;
 }
 
 int main() {
@@ -133,7 +146,7 @@ int main() {
     for(int index = 0;index < sz;++index) {
         arr[index].assign(sample);
     }
-
+    std :: cout << positive_sum(sample) << std :: endl;
 
     min(arr,sz);
 
