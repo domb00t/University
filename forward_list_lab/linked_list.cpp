@@ -1,8 +1,15 @@
 #include "linked_list.h"
+#include "student.h"
 
 List ::List() : head(nullptr), sz(0) {}
 
-void List ::addNode(int value)
+List :: List(size_t size) : head(nullptr), sz(0) {
+    for(size_t index = 0;index < size;++index) {
+        addNode(Student());
+    }
+}
+
+void List ::addNode(Student value)
 {
     Node_t *new_node = new Node_t;
     new_node->data = value;
@@ -20,7 +27,6 @@ void List ::addNode(int value)
         }
         current->next = new_node;
     }
-    sort();
     ++sz;
 }
 
@@ -29,7 +35,7 @@ void List ::print()
     Node_t *current = head;
     while (current != nullptr)
     {
-        std ::cout << current->data << ' ';
+        std ::cout << current->data << std :: endl;
         current = current->next;
     }
 }
@@ -45,12 +51,13 @@ void List::eraseLastNode()
         {
             current = current->next;
         }
-        delete current->next->next;
+        delete current->next;
+        --sz;
         current->next = nullptr;
     }
 }
 
-bool List ::isContains(int value)
+bool List ::isContains(Student value)
 {
     Node_t *current = head;
     bool fl = false;
@@ -66,7 +73,7 @@ bool List ::isContains(int value)
     return fl;
 }
 
-void List ::deleteByValue(int value)
+void List ::deleteByValue(Student value)
 {
     Node_t *current = head;
     Node_t *previous = head;
@@ -101,33 +108,6 @@ void List ::deleteByValue(int value)
     --sz;
 }
 
-void List :: sort()
-{
-    Node_t* current = head;
-    if(current != nullptr)
-    {
-        bool is_sorted = false;
-        while(!is_sorted)
-        {
-            is_sorted = true;
-            current = head;
-            while(current->next != nullptr)
-            {
-                if(current->data > current->next->data)
-                {
-                    Node_t* tmp = new Node_t;
-                    tmp->data = current->data;
-                    current->data = current->next->data;
-                    current->next->data = tmp->data;
-                    delete tmp;
-                    is_sorted = false;
-                }
-                current = current->next;
-            }
-        }
-    }
-}
-
 List :: ~List()
 {
     deleteList(head);
@@ -141,6 +121,29 @@ void List :: clear() {
 
 size_t List :: size() const {
     return sz;
+}
+
+Student& List:: operator[](size_t index) {
+
+    Node_t* current = head;
+    if (index < 0 || index >= sz) {
+        std :: cout << "out_of_range" << std :: endl;
+        std :: abort();
+    } else {
+        if(current == nullptr) {
+            std :: cout << "list is empty" << std :: endl;
+            std :: abort();
+        } else if (current->next == nullptr) {
+            return current->data;
+        } else {
+            size_t _index = 0;
+            while(_index < sz && current->next) {
+                current = current->next;
+                ++_index;
+            }
+        }
+    }
+    return current->data;
 }
 
 void List :: deleteList(Node_t*node)

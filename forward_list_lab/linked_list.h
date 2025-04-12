@@ -2,6 +2,9 @@
 #define __LINKED_LIST__
 
 #include <iostream>
+#include <cstring>
+
+#include "student.h"
 
 class List
 {
@@ -9,14 +12,16 @@ private:
 
     struct Node_t
     {
-        int data;
+        Student data;
         Node_t *next;
+
+        Node_t() : data(Student()), next(nullptr) {}
     };
 
-    void deleteByValue(int);
+    void deleteByValue(Student);
     void eraseLastNode();
     void deleteList(Node_t *);
-    void sort();
+
 
 
     Node_t *head;
@@ -24,12 +29,13 @@ private:
 
 public:
     List();
-    void addNode(int);
+    List(size_t);
+    void addNode(Student);
     void clear();
     void print();
-
+    Student& operator[](size_t);
     size_t size() const;
-    bool isContains(int);
+    bool isContains(Student);
     ~List();
 };
 
