@@ -123,26 +123,17 @@ size_t List :: size() const {
     return sz;
 }
 
-Student& List:: operator[](size_t index) {
+Student& List::operator[](size_t index) {
+    if (index >= sz) {
+        std::cout << "out_of_range" << std::endl;
+        std::abort();
+    }
 
     Node_t* current = head;
-    if (index < 0 || index >= sz) {
-        std :: cout << "out_of_range" << std :: endl;
-        std :: abort();
-    } else {
-        if(current == nullptr) {
-            std :: cout << "list is empty" << std :: endl;
-            std :: abort();
-        } else if (current->next == nullptr) {
-            return current->data;
-        } else {
-            size_t _index = 0;
-            while(_index < sz && current->next) {
-                current = current->next;
-                ++_index;
-            }
-        }
+    for (size_t i = 0; i < index; ++i) {
+        current = current->next;
     }
+
     return current->data;
 }
 

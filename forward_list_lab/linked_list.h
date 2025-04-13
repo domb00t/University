@@ -20,7 +20,7 @@ private:
 
     void deleteByValue(Student);
     void eraseLastNode();
-    void deleteList(Node_t *);
+    void deleteList(Node_t*);
 
 
 
