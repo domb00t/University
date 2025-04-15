@@ -12,6 +12,14 @@ public:
     Student(const Student&);
     ~Student();
 
+    int mark_math();
+    int mark_phys();
+    int mark_info();
+
+    int mark_math() const;
+    int mark_phys() const;
+    int mark_info() const;
+
     
     Student& operator=(const Student&);
     friend std :: ostream& operator<<(std :: ostream&, const Student&);

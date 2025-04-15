@@ -28,6 +28,30 @@ Student :: ~Student() {
     }
 }
 
+int Student::mark_math() {
+    return mark_math_;
+}
+
+int Student::mark_phys() {
+    return mark_physics_;
+}
+
+int Student::mark_info() {
+    return mark_informatics_;
+}
+
+int Student::mark_math() const {
+    return mark_math_;
+}
+
+int Student::mark_phys() const  {
+    return mark_physics_;
+}
+
+int Student::mark_info() const {
+    return mark_informatics_;
+}
+
 Student& Student::operator=(const Student& other) {
     if(this == &other) return *this;
     Student copy(other);
@@ -64,18 +88,20 @@ std::ostream &operator<<(std::ostream& os, const Student& student) {
 }
 
 std::istream &operator>>(std::istream& is, Student& student) {
-   char buffer[512];
+    char buffer[512];
 
-   std :: cout << "enter surname: ";
-   is.getline(buffer,512);
+    std :: cout << "enter surname: ";
+    is.ignore();
+    is.getline(buffer,512);
 
-   std :: cout << "enter marks: ";
-   is >> student.mark_math_ >> student.mark_physics_ >> student.mark_informatics_;
+    std :: cout << "enter marks: ";
+    is >> student.mark_math_ >> student.mark_physics_ >> student.mark_informatics_;
 
-   Student tmp(buffer,student.mark_math_,student.mark_physics_,student.mark_informatics_);
-   student = tmp;
-   
-   return is;
+    Student tmp(buffer,student.mark_math_,student.mark_physics_,student.mark_informatics_);
+    student =  tmp;
+
+    is.clear();
+    return is;
 }
 
 bool operator==(const Student& lhs, const Student& rhs) {

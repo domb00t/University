@@ -108,7 +108,12 @@ void List ::deleteByValue(Student value)
     --sz;
 }
 
-List :: ~List()
+size_t List::cap() const
+{
+    return size() * sizeof(Student);
+}
+
+List ::~List()
 {
     deleteList(head);
 }
@@ -124,6 +129,20 @@ size_t List :: size() const {
 }
 
 Student& List::operator[](size_t index) {
+    if (index >= sz) {
+        std::cout << "out_of_range" << std::endl;
+        std::abort();
+    }
+
+    Node_t* current = head;
+    for (size_t i = 0; i < index; ++i) {
+        current = current->next;
+    }
+
+    return current->data;
+}
+
+Student List::operator[](size_t index) const {
     if (index >= sz) {
         std::cout << "out_of_range" << std::endl;
         std::abort();

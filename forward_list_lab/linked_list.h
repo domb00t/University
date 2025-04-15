@@ -22,6 +22,8 @@ private:
     void eraseLastNode();
     void deleteList(Node_t*);
 
+    
+
 
 
     Node_t *head;
@@ -34,8 +36,11 @@ public:
     void clear();
     void print();
     Student& operator[](size_t);
+    Student operator[](size_t) const;
     size_t size() const;
     bool isContains(Student);
+
+    size_t cap() const;
     ~List();
 };
 
