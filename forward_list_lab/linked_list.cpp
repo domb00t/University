@@ -1,5 +1,4 @@
 #include "linked_list.h"
-#include "student.h"
 
 List ::List() : head(nullptr), sz(0) {}
 

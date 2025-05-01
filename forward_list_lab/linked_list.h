@@ -1,5 +1,5 @@
-#ifndef __LINKED_LIST__
-#define __LINKED_LIST__
+#ifndef __LINKED_LIST_H__
+#define __LINKED_LIST_H__
 
 #include <iostream>
 #include <cstring>
@@ -22,7 +22,7 @@ private:
     void eraseLastNode();
     void deleteList(Node_t*);
 
-    
+
 
 
 
