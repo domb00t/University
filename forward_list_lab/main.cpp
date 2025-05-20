@@ -7,7 +7,7 @@ bool onlyOneFour(const Student& student) {
     size_t count = 0;
     if(student.mark_math() == 4) ++count;
     if(student.mark_phys() == 4) ++count;
-    if(student.mark_info() == 4) ++ count;
+    if(student.mark_info() == 4) ++count;
     return (count == 1);
 }
 
