@@ -220,10 +220,7 @@ int search(const Matrix<T>& matr,T sample) {
 
 template<typename T>
 bool solution(const Matrix<T>& matr,T sample) {
-  if(search<T>(matr,sample) != -1) {
-    std :: cout << search<T>(matr,sample) << " ";
-    return true;
-  }
+  if(search<T>(matr,sample) != -1) return true;
   return false;
 }
 
@@ -234,12 +231,12 @@ int main()
 {
   int iSample;
   std :: cin >> iSample;
-  Matrix<int> iMatr(2,2);
+  Matrix<int> iMatr(3,3);
 
   input<int>(iMatr);
 
   if(solution<int>(iMatr,iSample)) {
-    std :: cout << "the first matching line is" << std :: endl;
+    std :: cout << "the first matching line is with no equal element " <<  search<int>(iMatr,iSample) <<std :: endl;
   } else {
     std :: cout << "There are no rows with no equal element" << std :: endl;
   }
@@ -249,12 +246,12 @@ int main()
 
   Complex comSample;
   std :: cin >> comSample;
-  Matrix<Complex> comMatr(2,2);
+  Matrix<Complex> comMatr(3,3);
 
   input<Complex>(comMatr);
 
   if(solution<Complex>(comMatr,comSample)) {
-    std :: cout << "the first matching line is" << std :: endl;
+    std :: cout << "the first matching line is with no equal element " << search<Complex>(comMatr,comSample) << std :: endl;
   } else {
     std :: cout << "There are no rows with no equal element" << std :: endl;
   }
